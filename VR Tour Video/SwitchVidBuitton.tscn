@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://SwitchVidBuitton.gd" type="Script" id=1]
+[ext_resource path="res://12.08.2023_19.24.11_REC.png" type="Texture" id=2]
+
+[node name="SwitchVidBuitton" type="TextureButton"]
+margin_left = 47.0
+margin_top = 36.0
+margin_right = 750.0
+margin_bottom = 419.0
+rect_scale = Vector2( 0.13999, 0.127165 )
+texture_normal = ExtResource( 2 )
+script = ExtResource( 1 )

@@ -1,0 +1,82 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://VID_20230801_130227_162.ogv" type="VideoStream" id=1]
+[ext_resource path="res://VideoNavi.gd" type="Script" id=2]
+[ext_resource path="res://SwitchVidBuitton.tscn" type="PackedScene" id=3]
+[ext_resource path="res://12.08.2023_19.25.02_REC.png" type="Texture" id=4]
+
+[node name="VideoNavi" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="VideoPlayer" type="VideoPlayer" parent="."]
+margin_right = 1281.0
+margin_bottom = 716.0
+stream = ExtResource( 1 )
+autoplay = true
+
+[node name="upButton" type="Button" parent="."]
+margin_left = 515.0
+margin_top = 25.0
+margin_right = 568.0
+margin_bottom = 45.0
+text = "^"
+
+[node name="downButton" type="Button" parent="."]
+margin_left = 515.0
+margin_top = 51.0
+margin_right = 568.0
+margin_bottom = 71.0
+text = "V"
+
+[node name="rightButton" type="Button" parent="."]
+margin_left = 573.0
+margin_top = 29.0
+margin_right = 593.0
+margin_bottom = 68.0
+text = ">"
+
+[node name="leftButton" type="Button" parent="."]
+margin_left = 490.0
+margin_top = 29.0
+margin_right = 510.0
+margin_bottom = 68.0
+text = "<"
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.1
+
+[node name="SwitchVidButtons" type="Node2D" parent="."]
+
+[node name="Bridge" parent="SwitchVidButtons" instance=ExtResource( 3 )]
+margin_right = 857.0
+margin_bottom = 473.0
+call_func = "bridge"
+
+[node name="Beach" parent="SwitchVidButtons" instance=ExtResource( 3 )]
+margin_top = 107.0
+margin_right = 857.0
+margin_bottom = 544.0
+texture_normal = ExtResource( 4 )
+call_func = "beach"
+
+[node name="Button" type="Button" parent="."]
+margin_left = 479.0
+margin_top = 294.0
+margin_right = 605.0
+margin_bottom = 331.0
+text = "CHANGE SCENE"
+
+[connection signal="finished" from="VideoPlayer" to="." method="_on_VideoPlayer_finished"]
+[connection signal="button_down" from="upButton" to="." method="_on_upButton_down"]
+[connection signal="button_up" from="upButton" to="." method="button_up"]
+[connection signal="pressed" from="upButton" to="." method="_on_upButton_pressed"]
+[connection signal="button_down" from="downButton" to="." method="_on_downButton_down"]
+[connection signal="button_up" from="downButton" to="." method="button_up"]
+[connection signal="pressed" from="downButton" to="." method="_on_downButton_pressed"]
+[connection signal="button_down" from="rightButton" to="." method="_on_rightButton_down"]
+[connection signal="button_up" from="rightButton" to="." method="button_up"]
+[connection signal="pressed" from="rightButton" to="." method="_on_rightButton_pressed"]
+[connection signal="button_down" from="leftButton" to="." method="_on_leftButton_down"]
+[connection signal="button_up" from="leftButton" to="." method="button_up"]
+[connection signal="pressed" from="leftButton" to="." method="_on_leftButton_pressed"]
+[connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
